@@ -1,0 +1,29 @@
+# Ignorar entorno virtual (ajusta el nombre si es distinto)
+archive_project/
+
+# Ignorar archivos compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar archivos de logs, temporales y backups
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Ignorar archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignorar archivos de configuración de editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Otros comunes
+.env
+*.egg-info/
