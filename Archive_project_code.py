@@ -3,7 +3,7 @@ from tkinter import filedialog
 from docx2pdf import convert
 from fpdf import FPDF
 import os
-
+from PIL import Image
 
 # Seleccionar el archivo que se utilizará
 def escojer_archivo(nombre_tipo_documento, extension_archivo):
@@ -68,18 +68,38 @@ def word_a_pdf():
     else:
         print("Archivo no encontrado")
 
+# Convertir imagen a pdf
+def img_a_pdf():
+    nombre_tipo_documento = "Imagen"
+    extension_archivo = "*.jpg"
+    ruta_archivo = escojer_archivo(nombre_tipo_documento, extension_archivo)
+    if ruta_archivo:
+        try:
+            imagen = Image.open(ruta_archivo)
+            salida_pdf = os.path.splitext(ruta_archivo)[0] + ".pdf"
+            imagen.convert("RGB").save(salida_pdf)
+            print("Imagen convertida a PDF correctamente.")
+        except Exception as e:
+            print("Error al convertir el archivo:", e)
+    else:
+        print("Archivo no encontrado")
+
 
 # Menú principal
 print("Seleccione una opción")
-print("1.- Convertir documento a PDF")
+print("1.- Convertir un archivo a PDF")
 opc = int(input("Opción: "))
 
 if opc == 1:
     print("Seleccione el tipo de archivo que desea convertir a PDF")
     print("1.- Documento Word")
     print("2.- Documento texto (txt)")
+    print("3.-Convertir imagen a pdf")
     sub_opc = int(input("Opción: "))
     if sub_opc == 1:
         word_a_pdf()
     elif sub_opc == 2:
         texto_a_pdf()
+    elif sub_opc == 3:
+        img_a_pdf()
+
