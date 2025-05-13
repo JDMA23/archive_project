@@ -1,6 +1,6 @@
-# 📁 Archive Proyect
+# 📁 Archive Project
 
-**Archive Proyect** es una herramienta desarrollada para asistir a estudiantes y docentes en la gestión y conversión de archivos educativos. Automatiza tareas comunes como la descarga de contenido desde YouTube y la transformación de archivos en formatos útiles para clases o tareas.
+**Archive Project** es una herramienta desarrollada para asistir a estudiantes y docentes en la gestión y conversión de archivos educativos. Automatiza tareas comunes como la descarga de contenido desde YouTube y la transformación de archivos en formatos útiles para clases o tareas.
 
 ---
 
