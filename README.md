@@ -21,7 +21,7 @@
 Asegúrate de tener Python instalado. Luego instala las siguientes bibliotecas:
 
 ```bash
-pip install pytube docx2pdf fpdf pillow
+pip install pytube docx2pdf fpdf pillow PyPDF2
 
 | Paquete    | Función                                   |
 | ---------- | ----------------------------------------- |
