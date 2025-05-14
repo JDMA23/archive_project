@@ -4,6 +4,7 @@ from docx2pdf import convert
 from fpdf import FPDF
 import os
 from PIL import Image
+from PyPDF2 import PdfMerger
 
 # Seleccionar el archivo que se utilizará
 def escojer_archivo(nombre_tipo_documento, extension_archivo):
@@ -84,10 +85,51 @@ def img_a_pdf():
     else:
         print("Archivo no encontrado")
 
+# Unir varios PDFs
+def unir_pdfs():
+    root = tk.Tk()
+    root.withdraw()
+    root.lift()
+    root.attributes('-topmost', True)
+
+    print("Abriendo selector de archivos PDF...")
+    rutas_archivos = filedialog.askopenfilenames(
+        title="Selecciona los archivos PDF que deseas unir",
+        filetypes=[("Archivos PDF", "*.pdf")],
+        parent=root
+    )
+
+    if not rutas_archivos:
+        print("No se seleccionaron archivos.")
+        return
+
+    merger = PdfMerger()
+    for pdf in rutas_archivos:
+        try:
+            merger.append(pdf)
+        except Exception as e:
+            print(f"Error al agregar {pdf}: {e}")
+
+    print("Abriendo ventana para guardar el archivo final...")
+    salida = filedialog.asksaveasfilename(
+        defaultextension=".pdf",
+        filetypes=[("Archivo PDF", "*.pdf")],
+        title="Guardar PDF combinado como",
+        parent=root
+    )
+
+    if salida:
+        merger.write(salida)
+        merger.close()
+        print(f"PDFs combinados correctamente en: {salida}")
+    else:
+        print("Operación cancelada.")
+
 
 # Menú principal
 print("Seleccione una opción")
 print("1.- Convertir un archivo a PDF")
+print("2.- Unir varios PDF")
 opc = int(input("Opción: "))
 
 if opc == 1:
@@ -102,4 +144,6 @@ if opc == 1:
         texto_a_pdf()
     elif sub_opc == 3:
         img_a_pdf()
+elif opc == 2:
+    unir_pdfs()
 
